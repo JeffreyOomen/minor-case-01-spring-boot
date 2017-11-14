@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Minor Case 01</title>
+
+  <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+  <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+
+  <div>
+    <form method="POST" enctype="multipart/form-data" th:action="@{/cursuses}">
+      <div class="form-group">
+        <label for="file">Kies een tekstbestand</label>
+        <input type="file" class="form-control" id="file" name="file" title=" ">
+      </div>
+      <button type="submit" class="btn btn-primary">Invoeren</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>

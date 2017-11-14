@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Minor Case 01</title>
+
+  <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+  <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+
+  <div th:if="${not #lists.isEmpty(cursus.cursistList)}">
+    <h2>Ingeschreven cursisten</h2>
+    <table class="table table-striped" th:object="${cursus}">
+      <tr>
+        <th>Voornaam</th>
+        <th>Achternaam</th>
+      </tr>
+      <tr th:each="cursist : *{cursistList}">
+        <td><a th:href="${'/cursists/' + cursist.id + '/traject'}"
+               th:text="${cursist.firstName}"></a></td>
+        <td th:text="${cursist.lastName}"></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="alert alert-info" th:if="${#lists.isEmpty(cursus.cursistList)}">
+    <strong>Info!</strong> Er zijn geen cursisten ingeschreven voor deze cursus op dit moment...
+  </div>
+</div>
+</body>
+</html>

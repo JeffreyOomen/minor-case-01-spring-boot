@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Minor Case 01</title>
+
+  <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+  <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+
+  <div class="alert alert-warning" th:if="${#lists.isEmpty(cursists)}">
+    <strong>Waarschuwing!</strong> Er zijn op dit moment nog geen cursisten...
+  </div>
+
+  <div>
+    <h2 th:text="${cursus.title}"></h2>
+    <form th:action="@{/cursuses/{id}/enroll(id=${cursus.id})}" method="post"
+          enctype="multipart/form-data">
+      <select name="cursistId">
+        <option th:each="cursist : ${cursists}"
+                th:value="${cursist.id}"
+                th:text="${cursist.firstName + ' ' + cursist.lastName}">Gebruiker
+        </option>
+      </select>
+      <input type="submit" class="btn btn-primary" value="Inschrijven"/>
+    </form>
+  </div>
+</div>
+</body>
+</html>

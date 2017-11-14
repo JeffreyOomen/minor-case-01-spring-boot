@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+</head>
+<body>
+
+<div class="container">
+
+  <div th:fragment="header">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <ul class="nav navbar-nav">
+            <li><a href="#" th:href="@{/cursuses}">Cursussen</a></li>
+            <li><a href="#" th:href="@{/cursuses/create}">Importeer Cursus</a></li>
+            <li><a href="#" th:href="@{/cursists/create}">Voeg cursisten toe</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
+</body>
+</html>

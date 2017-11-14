@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Minor Case 01</title>
+
+  <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+  <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+
+  <div>
+    <form th:object="${cursist}" th:action="@{/cursists}" method="post">
+      <input type="hidden" th:field="*{id}"/>
+      <input type="hidden" name="cursisId" th:value="${cursusId}"/>
+      <div class="form-group">
+        <label>Voornaam: </label>
+        <input type="text" class="form-control" th:field="*{firstName}"/>
+      </div>
+      <div class="form-group">
+        <label>Achternaam: </label>
+        <input type="text" class="form-control" th:field="*{lastName}"/>
+      </div>
+      <button type="submit" class="btn btn-primary">Opslaan</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>

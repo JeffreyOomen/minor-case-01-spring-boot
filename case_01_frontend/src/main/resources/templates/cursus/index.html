@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Minor Case 01</title>
+
+  <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+  <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+
+  <div class="alert alert-success" th:if="${message_file != null}">
+    <strong>Succes!</strong> <span th:text="${message_file}"></span>
+  </div>
+  <div class="alert alert-success" th:if="${message_records != null}">
+    <strong>Succes!</strong> <span th:text="${message_records}"></span>
+  </div>
+  <div class="alert alert-success" th:if="${message_enrolled != null}">
+    <strong>Succes!</strong> <span th:text="${message_enrolled}"></span>
+  </div>
+  <div class="alert alert-success" th:if="${message_added_cursist != null}">
+    <strong>Succes!</strong> <span th:text="${message_added_cursist}"></span>
+  </div>
+  <div class="alert alert-danger" th:if="${message_enrolled_fail != null}">
+    <strong>Error!</strong> <span th:text="${message_enrolled_fail}"></span>
+  </div>
+  <div class="alert alert-danger" th:if="${message_enrolled_full != null}">
+    <strong>Error!</strong> <span th:text="${message_enrolled_full}"></span>
+  </div>
+
+  <div th:if="${not #lists.isEmpty(cursuses)}">
+    <h2>Cursussen Overzicht</h2>
+    <table class="table table-striped">
+      <tr>
+        <th>Start datum</th>
+        <th>Duur</th>
+        <th>Titel</th>
+        <th>Ingeschreven cursisten</th>
+        <th>Inschrijven</th>
+      </tr>
+      <tr th:each="cursus : ${cursuses}">
+        <td th:text="${cursus.startDate}"></td>
+        <td th:text="${cursus.duration}"></td>
+        <td th:text="${cursus.title}"></td>
+        <td><a th:href="${'/cursuses/' + cursus.id + '/details'}"
+               th:text="${cursus.enrolledCursistCount()} + ' ' + cursisten"></a></td>
+        <td><a th:href="${'/cursuses/' + cursus.id + '/enroll'}">Inschrijven cursist</a></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="alert alert-info" th:if="${cursuses == null}">
+    <strong>Informatie!</strong> Er zijn geen cursussen op dit moment...
+  </div>
+</div>
+</body>
+</html>
