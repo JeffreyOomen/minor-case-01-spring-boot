@@ -2,6 +2,7 @@ package com.infosupport.minr.case_01_backend.controller;
 
 import com.infosupport.minr.case_01_backend.service.CursusService;
 import com.infosupport.minr.case_01_backend.domain.Cursus;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +12,9 @@ import java.util.List;
 public class CursusController {
     @Autowired
     private CursusService cursusService;
+
+    @Autowired
+    private Logger logger;
 
 //    private CursistService cursistService;
 
@@ -22,6 +26,7 @@ public class CursusController {
 
     @RequestMapping(value = {"/cursuses"}, method = RequestMethod.GET)
     public List<Cursus> getCursuses() {
+        logger.debug("Debugging very hard");
         return cursusService.findCursuses();
     }
 

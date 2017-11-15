@@ -9,8 +9,13 @@ import java.util.List;
 
 @Service
 public class CursusService {
-    @Autowired
+
     private CursusRepository cursusRepository;
+
+    @Autowired
+    public void setCursusRepository(CursusRepository cursusRepository) {
+        this.cursusRepository = cursusRepository;
+    }
 
     public List<Cursus> findCursuses() {
         return cursusRepository.findAll();
